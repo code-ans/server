@@ -7,6 +7,21 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
+    public function getById($id)
+    {
+        $task = DB::table('task')->where('id', $id)->first();
+        
+        if (!$task) {
+            return success_response([
+                'message' => 'task is not exists'
+            ]);
+        }
+
+        $task->operators = json_decode($task->operators);
+
+        return (array) $task;
+    }
+
     public function search()
     {
         $text = $this->get('query', 'nullable');

@@ -19,3 +19,4 @@ Route::post('tasks/create', 'TaskController@create');
 Route::post('tasks/search', 'TaskController@search');
 Route::post('tasks/update', 'TaskController@update');
 Route::post('tasks/delete', 'TaskController@delete');
+Route::post('tasks/{id}', 'TaskController@getById');
